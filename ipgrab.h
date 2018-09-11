@@ -51,7 +51,7 @@ char *match(char *pattern, char *text)
 struct ip getip()
     {
         struct ip ipAddresses;
-        system('ifconfig|grep "broadcast"> temp.tmp');
+        system("ifconfig|grep broadcast > temp.tmp");
         FILE *infile = fopen("temp.tmp", "r");
         fseek(infile, 0, SEEK_END);
         long size = ftell(infile);

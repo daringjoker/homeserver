@@ -14,6 +14,7 @@
 #include <sys/socket.h>
 #include <string.h>
 #include <netinet/in.h>
+#include "ipgrab.h"
 
 
 extern int createAndBind(int port, char protocal[])
@@ -46,17 +47,12 @@ extern int createAndBind(int port, char protocal[])
     }
 
 
-extern int broadcastsocket(char address[], port)
+extern int broadcastsocket()
     {
-        int                sock  = socket(AF_INET, SOCK_DGRAM, 0);
-        struct sockaddr_in sockaddr;
-        memset(&sockaddr, 0, sizeof(sockaddr));
-        sockaddr.sin_family      = AF_INET;
-        sockaddr.sin_addr.s_addr = htonl(address);
-        sockaddr.sin_port        = htons(port);
-        int enableBroadcast=1;
-        setsockopt(sock,SOL_SOCKET,SO_BROADCAST,&enableBroadcast,sizeof(enableBroadcast));
-
+        int sock            = socket(AF_INET, SOCK_DGRAM, 0);
+        int enableBroadcast = 1;
+        setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &enableBroadcast, sizeof(enableBroadcast));
+        return sock;
     }
 
 
