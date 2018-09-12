@@ -10,10 +10,13 @@
 #ifndef HOMESERVER_SERVER_H
 #define HOMESERVER_SERVER_H
 
-
-#include "socketsetup.h"
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <sys/socket.h>
+#include <string.h>
+#include <netinet/in.h>
+#include "ipgrab.h"
+#include <errno.h>
 
 void *broadcastserver();
 int responseServer();
